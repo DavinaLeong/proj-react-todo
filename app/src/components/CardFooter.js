@@ -1,10 +1,8 @@
 import React from 'react';
 
 function CardFooter(props) {
-  const completed = props.text ? 'incomplete' : 'completed';
-
   return (
-    <div className={'card-footer ' + completed}>
+    <div className='card-footer'>
       {props.text}
     </div>
   );

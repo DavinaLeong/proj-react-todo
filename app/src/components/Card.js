@@ -7,9 +7,9 @@ import CardFooter from './CardFooter';
 function Card(props) {
   return (
     <div className="card">
-      <CardHeader text={props.item.title} />
-      <CardContent text={props.item.body} />
-      <CardFooter text={props.item.completed} />
+      <CardHeader text={props.post.title} />
+      <CardContent text={props.post.body} />
+      <CardFooter text={props.post.userId} />
     </div>
   );
 }

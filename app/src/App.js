@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      items: []
+      posts: []
     };
   }
 
@@ -21,7 +21,7 @@ class App extends React.Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            items: result
+            posts: result
           });
         },
         (error) => {
@@ -35,8 +35,8 @@ class App extends React.Component {
 
   render() {
     const cards = [];
-    this.state.items.forEach((item, index) =>
-      cards.push(<Card key={'c'+index} item={item}/>));
+    this.state.posts.forEach((post, index) =>
+      cards.push(<Card key={'c'+index} post={post}/>));
     return (
       <div>
         <PageHeader />
