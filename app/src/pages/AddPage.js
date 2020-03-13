@@ -9,7 +9,9 @@ class AddPage extends React.Component {
     this.state = {
       title: '',
       body: '',
-      userId: ''
+      userId: '',
+      isSubmitted: false,
+      error: null
     };
   }
 
@@ -45,15 +47,38 @@ class AddPage extends React.Component {
       }
     })
       .then(response => response.json())
-      .then(() => this.props.setPage(this.props.pages.LIST));
+      .then(
+        (result) => {
+          this.setState({isSubmitted: true});
+          this.props.setPage(this.props.pages.LIST)
+        },
+        (error) => {
+          this.setState({
+            isSubmitted: true,
+            error
+          });
+        }
+      );
     return false;
   }
 
   render() {
-    return (
-      <div>
-        <PageHeader title='Add' />
-
+    const { error, isSubmitted } = this.state;
+    let result = null;
+    if (error) {
+      result = (
+        <div>
+          Error: {error.message}
+        </div>
+      );
+    } else if (isSubmitted) {
+      result = (
+        <div>
+          Form submitted
+        </div>
+      );
+    } else {
+      result = (
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Title</label>
@@ -73,6 +98,14 @@ class AddPage extends React.Component {
 
           <input type="submit" value="Submit"/>
         </form>
+      );
+    }
+
+    return (
+      <div>
+        <PageHeader title='Add' />
+
+        {result}
       </div>
     );
   }
