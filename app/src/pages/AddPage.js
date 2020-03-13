@@ -82,21 +82,21 @@ class AddPage extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Title</label>
-            <input type="text" value={this.state.title} required onChange={this.updateTitle}/>
+            <input className="form-control" type="text" value={this.state.title} required onChange={this.updateTitle}/>
           </div>
 
           <div>
             <label>Body</label>
-            <textarea rows="4" value={this.state.body} required onChange={this.updateBody}></textarea>
+            <textarea className="form-control" rows="4" value={this.state.body} required onChange={this.updateBody}></textarea>
           </div>
 
           <div>
             <label>User ID</label>
-            <input type="number" step="1" min="1" max="100" value={this.state.userId}
+            <input className="form-control mb-3" type="number" step="1" min="1" max="100" value={this.state.userId}
               required onChange={this.updateUserId}></input>
           </div>
 
-          <input type="submit" value="Submit"/>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       );
     }
