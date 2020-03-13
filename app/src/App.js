@@ -45,7 +45,7 @@ class App extends React.Component {
       div = <div>Loading...</div>
     } else {
       const cards = [];
-      this.state.posts.forEach((post, index) =>
+      posts.forEach((post, index) =>
         cards.push(<Card key={'c'+index} post={post}/>));
       div = cards;
     }
