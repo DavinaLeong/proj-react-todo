@@ -45,7 +45,7 @@ class AddPage extends React.Component {
       }
     })
       .then(response => response.json())
-      .then((json) => {console.log(json); this.props.setPage(this.props.pages.LIST)});
+      .then(() => this.props.setPage(this.props.pages.LIST));
     return false;
   }
 
