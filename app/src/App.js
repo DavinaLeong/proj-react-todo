@@ -34,9 +34,9 @@ class App extends React.Component {
   }
 
   render() {
-    let div = null;
-    
     const { error, isLoaded, posts } = this.state;
+    
+    let div = null;
     if (error) {
       div = (
         <div>Error: {error.message}</div>

@@ -32,9 +32,9 @@ class CardFooter extends React.Component {
   }
 
   render() {
-    let result = null;
     const { error, isLoaded, user } = this.state;
-
+    
+    let result = null;
     if (error) {
       result = <div>Error: {error.message}</div>
     } else if (!isLoaded) {
