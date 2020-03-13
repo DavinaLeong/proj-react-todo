@@ -32,9 +32,20 @@ class AddPage extends React.Component {
   }
 
   handleSubmit = (event) => {
-    // alert('A post was submitted.\nTitle: ' + this.state.title);
     event.preventDefault();
-    console.log(event.target);
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: this.state.title,
+        body: this.state.body,
+        userId: this.state.userId
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+      .then(response => response.json())
+      .then((json) => {console.log(json); this.props.setPage(this.props.pages.LIST)});
     return false;
   }
 
@@ -43,7 +54,7 @@ class AddPage extends React.Component {
       <div>
         <PageHeader title='Add' />
 
-        <form onSubmit={() => this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label>Title</label>
             <input type="text" value={this.state.title} required onChange={this.updateTitle}/>

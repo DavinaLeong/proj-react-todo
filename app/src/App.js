@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      page: this.props.pages.ADD,
+      page: this.props.pages.LIST,
     };
   }
 
@@ -26,7 +26,9 @@ class App extends React.Component {
       case this.props.pages.LIST:
         return <ListPage />;
       case this.props.pages.ADD:
-        return <AddPage />;
+        return <AddPage
+          pages={this.props.pages}
+          setPage={this.setPage} />;
       default:
         return <NotFoundPage />;
     }
