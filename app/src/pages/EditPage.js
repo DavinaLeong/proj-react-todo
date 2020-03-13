@@ -15,6 +15,25 @@ class EditPage extends React.Component {
     };
   }
 
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/posts/' + this.props.postId)
+      .then(response => response.json())
+      .then(
+        (post) => {
+          this.setState({
+            title: post.title,
+            body: post.body,
+            userId: post.userId,
+          });
+        },
+        (error) => {
+          this.setState({
+            error
+          });
+        }
+      );
+  }
+
   updateTitle = (event) => {
     this.setState({
       title: event.target.value
@@ -35,9 +54,10 @@ class EditPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
+    fetch('https://jsonplaceholder.typicode.com/posts/' + this.props.postId, {
+      method: 'PUT',
       body: JSON.stringify({
+        id: this.props.postId,
         title: this.state.title,
         body: this.state.body,
         userId: this.state.userId
@@ -103,7 +123,7 @@ class EditPage extends React.Component {
 
     return (
       <div>
-        <PageHeader title='Add' />
+        <PageHeader title='Edit' />
 
         {result}
       </div>

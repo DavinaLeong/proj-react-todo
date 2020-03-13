@@ -19,7 +19,8 @@ class App extends React.Component {
 
   setPostId = (id) => {
     this.setState({
-      postId: id
+      postId: id,
+      page: this.props.pages.EDIT
     });
   }
 
@@ -40,6 +41,7 @@ class App extends React.Component {
           setPage={this.setPage} />;
       case this.props.pages.EDIT:
         return <EditPage
+          postId={this.state.postId}
           pages={this.props.page}
           setPage={this.setPage} />;
       default:
