@@ -1,8 +1,8 @@
 import React from 'react';
 
-function PageHeader() {
+function PageHeader(props) {
   return (
-    <h1>TODO List</h1>
+    <h2>{props.title}</h2>
   );
 }
 

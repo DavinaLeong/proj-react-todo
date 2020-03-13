@@ -12,7 +12,6 @@ class CardFooter extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props);
     fetch('https://jsonplaceholder.typicode.com/users/' + this.props.text)
       .then(response => response.json())
       .then(
