@@ -2,7 +2,7 @@ import React from 'react';
 
 function CardContent(props) {
   return (
-    <div className="card-content">
+    <div className="card-body">
       {props.text}
     </div>
   );

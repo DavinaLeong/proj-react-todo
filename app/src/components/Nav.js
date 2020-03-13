@@ -4,13 +4,15 @@ function Nav(props) {
   const items = [];
   props.links.forEach((link, index) => {
     items.push(
-      <li key={'l'+index}><button onClick={() => props.setPage(link.page)} type="button">{link.name}</button></li>
+      <li className="nav-item" key={'l'+index}>
+        <button className="btn btn-link item-link" onClick={() => props.setPage(link.page)} type="button">{link.name}</button>
+      </li>
     );
   });
 
   return (
     <nav>
-      <ul>{items}</ul>
+      <ul className="nav">{items}</ul>
     </nav>
   );
 }
