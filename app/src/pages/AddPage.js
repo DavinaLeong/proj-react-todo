@@ -9,7 +9,7 @@ class AddPage extends React.Component {
     this.state = {
       title: '',
       body: '',
-      userId: null
+      userId: ''
     };
   }
 
@@ -25,8 +25,17 @@ class AddPage extends React.Component {
     });
   }
 
+  updateUserId = (event) => {
+    this.setState({
+      userId: event.target.value
+    });
+  }
+
   handleSubmit = (event) => {
+    // alert('A post was submitted.\nTitle: ' + this.state.title);
     event.preventDefault();
+    console.log(event.target);
+    return false;
   }
 
   render() {
@@ -34,7 +43,7 @@ class AddPage extends React.Component {
       <div>
         <PageHeader title='Add' />
 
-        <form onSubmit={() => this.handleSubmit} method="POST">
+        <form onSubmit={() => this.handleSubmit}>
           <div>
             <label>Title</label>
             <input type="text" value={this.state.title} required onChange={this.updateTitle}/>
@@ -43,6 +52,12 @@ class AddPage extends React.Component {
           <div>
             <label>Body</label>
             <textarea rows="4" value={this.state.body} required onChange={this.updateBody}></textarea>
+          </div>
+
+          <div>
+            <label>User ID</label>
+            <input type="number" step="1" min="1" max="100" value={this.state.userId}
+              required onChange={this.updateUserId}></input>
           </div>
 
           <input type="submit" value="Submit"/>
