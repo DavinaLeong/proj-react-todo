@@ -34,13 +34,26 @@ class App extends React.Component {
   }
 
   render() {
-    const cards = [];
-    this.state.posts.forEach((post, index) =>
-      cards.push(<Card key={'c'+index} post={post}/>));
+    let div = null;
+    
+    const { error, isLoaded, posts } = this.state;
+    if (error) {
+      div = (
+        <div>Error: {error.message}</div>
+      );
+    } else if (!isLoaded) {
+      div = <div>Loading...</div>
+    } else {
+      const cards = [];
+      this.state.posts.forEach((post, index) =>
+        cards.push(<Card key={'c'+index} post={post}/>));
+      div = cards;
+    }
+    
     return (
       <div>
         <PageHeader />
-        {cards}
+        {div}
       </div>
     );
   }
