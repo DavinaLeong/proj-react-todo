@@ -1,6 +1,7 @@
 const pages = {
   "LIST": "LIST",
-  "ADD": "ADD"
+  "ADD": "ADD",
+  "EDIT": "EDIT"
 };
 
 export default pages;

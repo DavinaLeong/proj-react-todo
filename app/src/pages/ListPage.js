@@ -46,7 +46,7 @@ class ListPage extends React.Component {
     } else {
       const cards = [];
       posts.forEach((post, index) =>
-        cards.push(<Card key={'c'+index} post={post}/>));
+        cards.push(<Card key={'c'+index} post={post} setPostId={this.props.setPostId}/>));
       div = cards;
     }
     
