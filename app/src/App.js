@@ -3,13 +3,15 @@ import React from 'react';
 import Title from './components/Title';
 import Nav from './components/Nav';
 import ListPage from './pages/ListPage';
+import AddPage from './pages/AddPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      page: this.props.pages.LIST,
+      page: this.props.pages.ADD,
     };
   }
 
@@ -22,7 +24,11 @@ class App extends React.Component {
   renderPage = (page) => {
     switch(page) {
       case this.props.pages.LIST:
-        return <ListPage />
+        return <ListPage />;
+      case this.props.pages.ADD:
+        return <AddPage />;
+      default:
+        return <NotFoundPage />;
     }
   }
 
