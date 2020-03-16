@@ -50,7 +50,7 @@ class AddPage extends React.Component {
       .then(response => response.json())
       .then(
         (result) => {
-          this.props.setPage(this.props.pages.LIST)
+          this.props.setPage(this.props.pages.LIST);
         },
         (error) => {
           this.setState({
