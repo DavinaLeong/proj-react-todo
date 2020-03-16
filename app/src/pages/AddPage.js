@@ -10,6 +10,7 @@ class AddPage extends React.Component {
       title: '',
       body: '',
       userId: '',
+      isSubmitted: false,
       error: null
     };
   }
@@ -34,6 +35,7 @@ class AddPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.setState({isSubmitted: true});
     fetch('https://jsonplaceholder.typicode.com/posts', {
       method: 'POST',
       body: JSON.stringify({
@@ -60,22 +62,22 @@ class AddPage extends React.Component {
   }
 
   render() {
-    const { error } = this.state;
-    let errorDiv = null;
+    const { error, isSubmitted } = this.state;
+    let result = null;
     if (error) {
-      errorDiv = (
+      result = (
         <div>
           Error: {error.message}
         </div>
       );
-    }
-
-    return (
-      <div>
-        <PageHeader title='Add' />
-
-        {errorDiv}
-
+    } else if (isSubmitted) {
+      result = (
+        <div>
+          Form submitted
+        </div>
+      );
+    } else {
+      result = (
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Title</label>
@@ -95,6 +97,14 @@ class AddPage extends React.Component {
 
           <button type="submit" className="btn btn-primary">Submit</button>
         </form>
+      );
+    }
+
+    return (
+      <div>
+        <PageHeader title='Add' />
+
+        {result}
       </div>
     );
   }
