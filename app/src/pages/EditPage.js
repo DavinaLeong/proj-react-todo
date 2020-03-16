@@ -54,6 +54,7 @@ class EditPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.setState({isSubmitted: true});
     fetch('https://jsonplaceholder.typicode.com/posts/' + this.props.postId, {
       method: 'PUT',
       body: JSON.stringify({
@@ -69,12 +70,10 @@ class EditPage extends React.Component {
       .then(response => response.json())
       .then(
         (result) => {
-          this.setState({isSubmitted: true});
-          this.props.setPage(this.props.pages.LIST)
+          this.props.setPage(this.props.pages.LIST);
         },
         (error) => {
           this.setState({
-            isSubmitted: true,
             error
           });
         }

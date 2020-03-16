@@ -42,7 +42,7 @@ class App extends React.Component {
       case this.props.pages.EDIT:
         return <EditPage
           postId={this.state.postId}
-          pages={this.props.page}
+          pages={this.props.pages}
           setPage={this.setPage} />;
       default:
         return <NotFoundPage />;
